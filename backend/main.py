@@ -20,3 +20,8 @@ def root():
     return{
         "message": "Enterprise AI Operations Platform"
     }
+@app.get("/health")
+def health():
+    return{
+        "Status": "healthy"
+    }
