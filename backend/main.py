@@ -11,8 +11,13 @@
 #         print("=" * 50)
 #         print(article["title"])
 #         print(article["content"])
+
+
+
+
 from backend.data.sample_articles import articles
 from fastapi import FastAPI
+from fastapi import HTTPException
 app = FastAPI()
 
 @app.get("/")
@@ -37,9 +42,7 @@ def get_article(article_id:str):
         if article["id"] == article_id:
             return article
         
-    return{
-        "error: Article not found"
-        }
+    raise HTTPException(status_code=404, detail="Article not found")
 
 from backend.schemas.search_request import(SearchRequest)
 from backend.services.search_service import(search_articles)
@@ -48,3 +51,7 @@ from backend.services.search_service import(search_articles)
 def search(request:SearchRequest):
     results = search_articles(request.keyword)
     return{"results": results}
+
+
+
+
