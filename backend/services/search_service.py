@@ -1,4 +1,4 @@
-from data.sample_articles import articles
+from backend.data.sample_articles import articles
 
 def search_articles(keyword):
     results = []
