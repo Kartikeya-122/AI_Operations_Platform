@@ -1,7 +1,9 @@
 from sqlalchemy import create_engine 
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
+import os
 
-DATABASE_URL = ("postgresql://postgres:Pianoguitar122()@localhost:5432/ai_operations_platform")
+DATABASE_URL = os.getenv("DATABASE_URL")
 engine = create_engine(DATABASE_URL)
 
 SessionLocal = sessionmaker(
@@ -9,3 +11,10 @@ SessionLocal = sessionmaker(
     autoflush = False,
     bind = engine
 )
+def get_db():
+    db = SessionLocal()
+
+    try:
+        yield db
+    finally:
+        db.close()

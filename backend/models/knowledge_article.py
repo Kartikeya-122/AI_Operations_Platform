@@ -1,4 +1,4 @@
-class KnowledgeAritcle:
+class KnowledgeArticle:
     def __init__(
         self,
         article_id,
