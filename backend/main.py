@@ -18,7 +18,10 @@
 from backend.data.sample_articles import articles
 from fastapi import FastAPI
 from fastapi import HTTPException
+from backend.repositories.article_repository import ArticleRepository
+
 app = FastAPI()
+repository = ArticleRepository()
 
 @app.get("/")
 def root():
@@ -46,6 +49,9 @@ def get_article(article_id:str):
 
 from backend.schemas.search_request import(SearchRequest)
 from backend.services.search_service import(search_articles)
+
+
+
 
 @app.post("/Search")
 def search(request:SearchRequest):

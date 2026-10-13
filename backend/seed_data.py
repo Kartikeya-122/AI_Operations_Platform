@@ -1,8 +1,6 @@
 from database.connection import(SessionLocal)
 from database.models import(KnowledgeArticle)
 from repositories.article_repository import(ArticleRepository)
-
-
 db = SessionLocal()
 
 # articles = [
